@@ -31,4 +31,4 @@ class cards:
             self (Cards): An instance of cards.
         """
         self.value = random.randint(1, 13)
-        self.points = 100 if correct_guess == True else -75 if incorrect_guess == True
+        self.points = 100 if self.value == True else -75 if self.value == False
