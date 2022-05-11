@@ -33,7 +33,7 @@ root                    (project root folder)
 * Python 3.8.0
 
 ##### Author Names:
--Olamilekan Ajibola
--Paul Agyare
--Nayara Mateus Nobre
+-Olamilekan Ajibola (aji22001@byui.edu)
+-Paul Agyare (Biggstagga@gmail.com)
+-Nayara Mateus Nobre (nayara.mnobre@gmail.com)
 -Hannah Mosier (hannah89mosier@byui.edu)
