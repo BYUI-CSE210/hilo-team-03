@@ -29,7 +29,9 @@ class Director:
         self.score = 0
         self.total_score = 0
 
+        # ask if it could be range(12)* - The range from 1 -13?
         for i in range(1):
+            # ask if it could be Cards()* - The Class, not the list?
             card = cards()
             self.cards.append(card)
 
