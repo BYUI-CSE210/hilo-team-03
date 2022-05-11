@@ -20,6 +20,8 @@ class cards:
         Args:
             self (Cards): An instance of Cards.
         """
+        self.value = 0
+        self.points = 300
 
     # 3) Create the draw(self) method. Use the following method comment.
     def draw(self):
@@ -28,3 +30,5 @@ class cards:
         Args:
             self (Cards): An instance of cards.
         """
+        self.value = random.randint(1, 13)
+        self.points = 100 if correct_guess == True else -75 if incorrect_guess == True
