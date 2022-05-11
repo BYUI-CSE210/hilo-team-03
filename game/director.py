@@ -25,13 +25,15 @@ class Director:
             self (Director): an instance of Director.
         """
         self.cards = []
+        self.second_cards =[]
         self.is_playing = True
         self.score = 0
-        self.total_score = 0
+        self.total_score = 300
 
-        for i in range(1):
-            card = cards()
-            self.cards.append(card)
+        card = cards()
+        second_card = cards()
+        self.cards.append(card)
+        self.second_cards.append(second_card)
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -50,6 +52,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        starting_card = print(f"The card is: {cards.draw}.")
         draw_card = input("Higher or lower? [h/l] ")
         self.is_playing = (draw_card == "y")
 
@@ -63,6 +66,12 @@ class Director:
         if not self.is_playing:
             return
 
+        card = cards.draw()
+        if card > starting_card
+
+        self.score += cards.points
+        self.total_score += self.score
+
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
 
@@ -71,3 +80,12 @@ class Director:
         """
         if not self.is_playing:
             return
+
+        values = ""
+        for i in range(len(self.cards)):
+            card = self.cards[i]
+            values += f"{card.value}"
+
+        print(f"The card is: {values}")
+        print(f"Your score is: {self.total_score}")
+        self.is_playing == (self.score > 0)
