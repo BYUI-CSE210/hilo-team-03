@@ -29,9 +29,8 @@ class Director:
         self.score = 0
         self.total_score = 0
 
-        for i in range(1):
-            card = cards()
-            self.cards.append(card)
+        card = cards()
+        self.cards.append(card)
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -40,6 +39,7 @@ class Director:
             self (Director): an instance of Director.
         """
         while self.is_playing:
+            print(f"The card is: {}")
             self.get_inputs()
             self.do_updates()
             self.do_outputs()
