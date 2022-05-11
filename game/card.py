@@ -1,9 +1,7 @@
 import random
 
-# 1) Add the class declaration. Use the following class comment.
 
-
-class cards:
+class Cards:
     """
     Cards represented as a number from 1 - 13
     The resposibility of the cards is to keep track of the card that is drawn and calculate the points for it.
@@ -21,14 +19,13 @@ class cards:
             self (Cards): An instance of Cards.
         """
         self.value = 0
-
-    # 3) Create the draw(self) method. Use the following method comment.
+        
 
     def draw(self):
-        """Generates a new random value from 1 to 13 [I already imported the random library]
+        """Generates a new random value from 1 to 13
         
         Args:
             self (Cards): An instance of cards.
         """
         self.value = random.randint(1, 13)
-        # self.points = 100 if correct_guess == True else -75 if incorrect_guess == True
+        

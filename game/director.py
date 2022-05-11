@@ -4,17 +4,20 @@
     Rules listed and your program meets all of the Requirements found on 
     https://byui-cse.github.io/cse210-course-competency/abstraction/materials/hilo-specification.html
 """
-from game.card import cards
+from game.card import Cards
+
 class Director:
     """A person who directs the game. 
 
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        cards (List[cards]): a list of cards instances.
         is_playing (boolean): Whether or not the game is being played.
-        score (int): The score for one round of play.
-        total_score (int): The score for the entire game.
+        score (int): The score for the game.
+        is_higher (boolean): whether drawn card is higher or not.
+        card_1 (int): The first drawn card.
+        card_2 (int): The second drawn card.
+        again (string): users input to play again [y/n].   
     """
 
     def __init__(self):
@@ -25,12 +28,10 @@ class Director:
         """
         self.is_playing = True
         self.is_higher = True
-        self.total_score = 300
-        cards = Cards()
-        cards.draw()
-        self.card = cards.value
-        cards.draw()
-        self.second_card = cards.value
+        self.card_1 = 0
+        self.card_2 = 2
+        self.score = 300
+        self.again = "n"
         
 
     def start_game(self):
@@ -40,24 +41,29 @@ class Director:
             self (Director): an instance of Director.
         """
         while self.is_playing:
-            print(f"The card is: {self.card}")
             self.get_inputs()
             self.do_updates()
             self.do_outputs()
-            again = input("Play again? [y/n] ")
-            self.is_playing = (again == "y")
-
+            self.is_playing = (self.again == "y")
+            
     def get_inputs(self):
         """Ask the user if they want to draw a card.
 
         Args:
             self (Director): An instance of Director.
         """
+        # An instance of card called c_init
+        c_init = Cards()
+        c_init.draw()
+        self.card_1 = c_init.value
+
         
-        draw_card = input("Higher or lower? [h/l] ")
-        self.is_higher = (draw_card == "h")
+        print("")
+        print(f"The card is: {self.card_1}")
+        higher = input("Higher or lower? [h/l] ")
+        self.is_higher = (higher == "h")
 
-
+   
     def do_updates(self):
         """Updates the player's score.
 
@@ -66,19 +72,22 @@ class Director:
         """
         if not self.is_playing:
             return
+        # An instance of card called c_final
+        c_final = Cards()
+        c_final.draw()
+        self.card_2 = c_final.value
 
-        print(f"Next card was: {self.second_card}")
+        #Main Game logic
         if self.is_higher:
-            if self.second_card > self.card:
-                self.total_score += 100
-            else: self.total_score -= 75
-        else :
-            if self.second_card < self.card:
-                self.total_score += 100
-            else: self.total_score -= 75 
-
+            if self.card_2 > self.card_1: 
+                self.score += 100
+            else: self.score -= 75
+        else:
+            if self.card_2 < self.card_1: 
+                self.score += 100
+            else: self.score -= 75
         
-                
+
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
@@ -88,6 +97,7 @@ class Director:
         """
         if not self.is_playing:
             return
-        print(f"Your score is: {self.total_score}")
-
-        
+       
+        print(f"Next card was: {self.card_2}")
+        print(f"Your score is: {self.score}")
+        self.again = input("Play again? [y/n] ")
