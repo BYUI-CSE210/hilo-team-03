@@ -34,6 +34,11 @@ class Director:
         second_card = cards()
         self.cards.append(card)
         self.second_cards.append(second_card)
+        # ask if it could be range(12)* - The range from 1 -13?
+        for i in range(1):
+            # ask if it could be Cards()* - The Class, not the list?
+            card = cards()
+            self.cards.append(card)
 
     def start_game(self):
         """Starts the game by running the main game loop.
