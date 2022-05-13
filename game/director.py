@@ -43,6 +43,7 @@ class Director:
         while self.is_playing:
             self.get_inputs()
             self.do_updates()
+            self.check_score()
             self.do_outputs()
             self.is_playing = (self.again == "y")
             
@@ -101,3 +102,14 @@ class Director:
         print(f"Next card was: {self.card_2}")
         print(f"Your score is: {self.score}")
         self.again = input("Play again? [y/n] ")
+
+    def check_score(self):
+        """Checks if score is below zero and ends the game if it is true
+        
+        Args:
+            self (Director): An instance of Director.
+            """
+        if self.score <= 0:
+            self.is_playing = False
+            self.again = "n"
+            print("Game Over😞")
