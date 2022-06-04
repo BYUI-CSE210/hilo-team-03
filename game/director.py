@@ -102,7 +102,7 @@ class Director:
         print(f"Next card was: {self.card_2}")
         print(f"Your score is: {self.score}")
         self.again = input("Play again? [y/n] ")
-
+           
     def check_score(self):
         """Checks if score is below zero and ends the game if it is true
         
@@ -113,3 +113,5 @@ class Director:
             self.is_playing = False
             self.again = "n"
             print("Game Over😞")
+            print()
+            print("You can always try again, you may never know...")
